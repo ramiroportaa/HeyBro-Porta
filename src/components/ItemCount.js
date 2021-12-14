@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import "./ItemCount.css";
 
 export default function ItemCount ({stock, initial}) {
 
@@ -19,9 +20,9 @@ export default function ItemCount ({stock, initial}) {
             <div className="col-sm-7 pr-sm-0">
                 <div className="d-flex align-items-center justify-content-between p-1 border"><span className="small text-uppercase text-gray me-4 no-select">Cantidad</span>
                     <div className="quantity">
-                    <button className="dec-btn p-0" onClick={Disminuir}><i className="fas fa-caret-left"></i></button>
+                    <button className="p-0" onClick={Disminuir}><i className="fas fa-caret-left"></i></button>
                     <input className="form-control border-0 shadow-0 p-0" type="text" value={Contador.Initial}/>
-                    <button className="inc-btn p-0" onClick={Aumentar}><i className="fas fa-caret-right"></i></button>
+                    <button className="p-0" onClick={Aumentar}><i className="fas fa-caret-right"></i></button>
                     </div>
                 </div>
             </div>

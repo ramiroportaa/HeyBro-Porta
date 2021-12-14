@@ -1,14 +1,13 @@
 import React from 'react'
 import CartWidget from './CartWidget';
 
-const Titulo = (props)=>(
-    <>
-        <a className="navbar-brand" href=" "><img src={props.imgSrc} alt={props.titulo} width="45rem"/></a>
-        <a className="navbar-brand" href=" ">{props.titulo}</a>
-    </>
-);
-
 function NavBar(){
+    const Titulo = (props)=>(
+        <>
+            <a className="navbar-brand" href=" "><img src={props.imgSrc} alt={props.titulo} width="45rem"/></a>
+            <a className="navbar-brand" href=" ">{props.titulo}</a>
+        </>
+    );
     return (
         <nav className="navbar navbar-expand-lg navbar-dark text-white bg-dark fixed-top">
         <div className="container px-5">
