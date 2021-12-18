@@ -1,13 +1,15 @@
-import React from 'react'
+import React from 'react';
+import { Link, NavLink } from 'react-router-dom';
 import CartWidget from './CartWidget';
 
 function NavBar(){
     const Titulo = (props)=>(
         <>
-            <a className="navbar-brand" href=" "><img src={props.imgSrc} alt={props.titulo} width="45rem"/></a>
-            <a className="navbar-brand" href=" ">{props.titulo}</a>
+            <Link to={"/"} className="navbar-brand"><img src={props.imgSrc} alt={props.titulo} width="45rem"/></Link>
+            <Link to={"/"} className="navbar-brand">{props.titulo}</Link>
         </>
     );
+
     return (
         <nav className="navbar navbar-expand-lg navbar-dark text-white bg-dark fixed-top">
         <div className="container px-5">
@@ -18,16 +20,16 @@ function NavBar(){
             <div className="collapse navbar-collapse justify-content-end" id="navbarScroll">
                 <ul className="navbar-nav text-center">
                     <li className="nav-item my-lg-2 mx-lg-2">
-                    <a className="nav-link active" aria-current="page" href=" ">Inicio</a>
+                    <NavLink to={"/"} activeClassName="active" className="nav-link">Inicio</NavLink>
                     </li>
                     <li className="nav-item my-lg-2 mx-lg-2">
-                    <a className="nav-link" href=" ">Productos</a>
+                    <NavLink to={"/productos"} activeClassName="active" className="nav-link">Productos</NavLink>
                     </li>
                     <li className="nav-item my-lg-2 mx-lg-2">
-                    <a className="nav-link" href=" ">Contacto</a>
+                    <NavLink to={"/contacto"} activeClassName="active" className="nav-link">Contacto</NavLink>
                     </li>
-                    <li className="nav-item my-lg-3 ms-lg-2">
-                        <CartWidget/>
+                    <li className="nav-item my-lg-2 ms-lg-2">
+                    <NavLink to={"/cart"} activeClassName="active" className="nav-link"><CartWidget/></NavLink>
                     </li>
                 </ul>
             </div>
