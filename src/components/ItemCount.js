@@ -1,18 +1,23 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import "./ItemCount.css";
 
 export default function ItemCount ({stock, initial}) {
 
-    const [Contador, SetContador] = useState({Stock: Number(stock), Initial: Number(initial)})
+    const [Contador, SetContador] = useState({Disponible: 0, Valor: 0})
+    useEffect(() => {
+        SetContador({Disponible: Number(stock) - Number(initial), Valor: Number(initial)})
+        console.log(stock);
+    },[stock])
+    
     const Aumentar = ()=>{
-        (Contador.Stock > 0) ? SetContador({ Initial: Contador.Initial + 1, Stock: Contador.Stock - 1}) : console.log("STOCK MAXIMO ALCANZADO");
+        (Contador.Disponible > 0) ? SetContador({ Valor: Contador.Valor + 1, Disponible: Contador.Disponible - 1}) : console.log("STOCK MAXIMO ALCANZADO");
     }
     const Disminuir = ()=>{
-        (Contador.Initial > 0) ? SetContador({ Initial: Contador.Initial - 1, Stock: Contador.Stock + 1}) : console.log("EL CONTADOR ESTA EN CERO");
+        (Contador.Valor > 0) ? SetContador({ Valor: Contador.Valor - 1, Disponible: Contador.Disponible + 1}) : console.log("EL CONTADOR ESTA EN CERO");
     }
     
     function onAdd () {
-        alert(`Agregaste ${Contador.Initial} unidades al carrito`)
+        alert(`Agregaste ${Contador.Valor} unidades al carrito`)
     }
 
     return (
@@ -21,7 +26,7 @@ export default function ItemCount ({stock, initial}) {
                 <div className="d-flex align-items-center justify-content-between p-1 border"><span className="small text-uppercase text-gray me-4 no-select">Cantidad</span>
                     <div className="quantity">
                     <button className="p-0" onClick={Disminuir}><i className="fas fa-caret-left"></i></button>
-                    <input className="form-control border-0 shadow-0 p-0" type="text" value={Contador.Initial}/>
+                    <input className="form-control border-0 shadow-0 p-0" type="text" value={Contador.Valor}/>
                     <button className="p-0" onClick={Aumentar}><i className="fas fa-caret-right"></i></button>
                     </div>
                 </div>

@@ -1,5 +1,6 @@
 import React from 'react'
 import "./Item.css"
+import { Link } from 'react-router-dom'
 
 const Item = (props) => {
     return (
@@ -7,9 +8,9 @@ const Item = (props) => {
             <div className="mb-3 position-relative">
                 <div className="badge text-black badge-primary">{(props.stock>0) ? "DISPONIBLE" : "AGOTADO"}
                 </div>
-                <a className="d-block" href=" ">
+                <Link to="/productos/item/2"  className="d-block">
                     <img className="img-fluid w-100" src={props.pictureUrl} alt={props.title}/>
-                </a>
+                </Link>
                 <div className="product-overlay">
                     <ul className="mb-0 list-inline">
                         <li className="list-inline-item m-0 p-0"><a className="btn btn-sm btn-dark" href=" ">Agregar al carrito</a></li>
