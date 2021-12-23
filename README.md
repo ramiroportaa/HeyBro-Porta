@@ -6,3 +6,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 Un simple E-commerce de indumentaria creado con ReactJs y haciendo uso de bootstrap para el diseño CSS.
 Cuenta con una "landing home", catalogo de productos visualizable por categorias, vista de detalle del producto, carrito, checkout, y formulario de contacto.
+
+## GIF muestra de navegabilidad.
+
+![Alt Text](https://i.ibb.co/3F6v2Lz/Animation.gif)
