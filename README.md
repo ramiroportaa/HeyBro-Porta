@@ -9,4 +9,4 @@ Cuenta con una "landing home", catalogo de productos visualizable por categorias
 
 ## GIF muestra de navegabilidad.
 
-![Alt Text](https://i.ibb.co/3F6v2Lz/Animation.gif)
+![https://i.ibb.co/3F6v2Lz/Animation.gif](https://i.ibb.co/3F6v2Lz/Animation.gif)
