@@ -1,0 +1,21 @@
+/* PORTADA */
+.portada-text{
+    position: relative;
+    margin-top: 1rem;
+    font-size: 4rem;
+    font-weight: bolder;
+    color: black;
+    width: 35rem;
+    max-width: calc(100vw - 40px);
+}
+.portada-boton{
+    margin-top: 1rem;
+    font-size: 1.5rem;
+    background-color: black;
+    color: white;
+    box-shadow: 0 0 10px black;
+}
+.portada-boton:hover{
+    background-color: whitesmoke;
+    color: black;
+}

@@ -69,3 +69,6 @@ body {
 .reset-anchor:hover, .reset-anchor:focus {
 	text-decoration: none;
 }
+.background-hover:hover{
+	background-color: #dcb14a !important;
+}

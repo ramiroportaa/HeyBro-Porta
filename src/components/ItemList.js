@@ -9,7 +9,7 @@ const ItemList = ({items}) => {
             /* Hago iteracion de los productos usando map y creando un componente Item por cada producto */
             productos.map(prod => (
                 <div key={prod.id} className="col-xl-3 col-lg-3 col-sm-6">
-                    <Item title={prod.title} price={prod.price} pictureUrl={prod.pictureUrl} stock={prod.stock}></Item>
+                    <Item {...prod}></Item>
                 </div>
             ))
             }        
