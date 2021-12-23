@@ -9,4 +9,5 @@ Cuenta con una "landing home", catalogo de productos visualizable por categorias
 
 ## GIF muestra de navegabilidad.
 
-![https://i.ibb.co/3F6v2Lz/Animation.gif](https://i.ibb.co/3F6v2Lz/Animation.gif)
+![GIF](https://github.com/ramiroportaa/HeyBro-Porta/blob/3eef408e08e35ead69e951e7c9d6998fefbcf161/Animation.gif)
+https://github.com/ramiroportaa/HeyBro-Porta/blob/3eef408e08e35ead69e951e7c9d6998fefbcf161/Animation.gif
