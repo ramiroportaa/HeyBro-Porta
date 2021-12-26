@@ -30,7 +30,9 @@ export default function ItemCount ({stock, initial}) {
                     </div>
                 </div>
             </div>
-            <div className="col-sm-5 pl-sm-0"><a href=" " className="btn btn-dark btn-sm btn-block h-100 d-flex align-items-center justify-content-center px-0 background-hover" onClick={onAdd}>Agregar al carrito</a></div>
+            <div className="col-sm-5 pl-sm-0">
+                <a href=" " className="btn btn-dark btn-sm btn-block h-100 d-flex align-items-center justify-content-center px-0 background-hover" onClick={onAdd}>Agregar al carrito</a>
+            </div>
         </div>
     )
 }

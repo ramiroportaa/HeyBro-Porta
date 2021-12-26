@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react'
-import ItemList from './ItemList';
 import { Link, useParams } from 'react-router-dom';
+import ItemList from './ItemList';
+import Common from './Common';
 
 /* Creamos DB para simular la lista de productos que deberia otorgar el backend */
 export const DB = [{id: 1, title: "Bermuda negra FRANKLIN", description: "Bermuda clasica de gabardina para todos tus dias de verano", price: 3000, pictureUrl: "/img//1.jpg", stock: 4, category:"bermudas"},
@@ -17,9 +18,11 @@ export default function ItemListContainer (props) {
     const {categoryId} = useParams();
     let isCategory = categoryId===undefined ? false : true;
     const Greeting = isCategory ? categoryId : props.greeting;
-    const [productos, setProductos] = useState([])
+    const [productos, setProductos] = useState([]);
+    const [isLoading, setIsLoading] = useState(true);
     
     useEffect(() => {
+        setIsLoading(true)
         /* Async mock (simulacion de proceso asincronico usando promise) */
         const API = new Promise((resolve, reject) => {
             setTimeout(()=>{
@@ -31,6 +34,7 @@ export default function ItemListContainer (props) {
         })
         API.then((res)=>{
             setProductos(res)
+            setIsLoading(false)
         })
     }, [categoryId, isCategory])
 
@@ -38,8 +42,8 @@ export default function ItemListContainer (props) {
  
     return (
         <div className="container">
-            <h1 className="mt-5 pt-5 text-center text-uppercase"> {Greeting} </h1>
-            <hr className="mb-5"/>
+            <Common.Title text={Greeting}></Common.Title>
+            <Common.Hr></Common.Hr>
             <div className='row'>
                 <div className="col-lg-3 order-2 order-lg-1">
                     <h5 className="text-uppercase mb-4">Categorias</h5>
@@ -51,7 +55,9 @@ export default function ItemListContainer (props) {
                 </div>
                 <div className="col-lg-9 order-1 order-lg-2 mb-5 mb-lg-0">
                     <div className="row mb-3 align-items-center justify-content-center">
+                        {isLoading ? <Common.Loading/> :
                         <ItemList items={productos}></ItemList>
+                        }
                     </div>
                 </div>
             </div>

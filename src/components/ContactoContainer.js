@@ -1,11 +1,12 @@
 import React from 'react'
 import FormContacto from './FormContacto'
+import Common from './Common'
 
 const ContactoContainer = () => {
     return (
         <div className='container'>
-            <h1 className='mt-5 pt-5 text-center text-uppercase'>Contacto</h1>
-            <hr className="mb-5"/>
+            <Common.Title text="CONTACTO"></Common.Title>
+            <Common.Hr></Common.Hr>
             <div class="row">
             <div class="col-md-12">
                 <div class="well well-sm form">
