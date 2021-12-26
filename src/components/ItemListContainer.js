@@ -22,7 +22,6 @@ export default function ItemListContainer (props) {
     const [isLoading, setIsLoading] = useState(true);
     
     useEffect(() => {
-        setIsLoading(true)
         /* Async mock (simulacion de proceso asincronico usando promise) */
         const API = new Promise((resolve, reject) => {
             setTimeout(()=>{
@@ -36,6 +35,7 @@ export default function ItemListContainer (props) {
             setProductos(res)
             setIsLoading(false)
         })
+        return (setIsLoading(true))
     }, [categoryId, isCategory])
 
     const categoryList = ["remeras", "pantalones", "bermudas"]

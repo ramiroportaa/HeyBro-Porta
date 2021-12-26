@@ -9,7 +9,6 @@ const ItemDetailContainer = () => {
     const [item, setItem] = useState({})
     const [isLoading, setIsLoading] = useState(true);
     useEffect(() => {
-        setIsLoading(true)
         /* Async mock (simulacion de proceso asincronico usando promise) */
         const getItem = new Promise((resolve, reject) => {
             setTimeout(()=>{
@@ -23,6 +22,7 @@ const ItemDetailContainer = () => {
             setItem(res);
             setIsLoading(false)
         })
+        return (setIsLoading(true))
     }, [id])
 
     return (
