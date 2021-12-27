@@ -1,22 +1,18 @@
 import React, {useState, useEffect} from 'react';
 import "./ItemCount.css";
 
-export default function ItemCount ({stock, initial}) {
+export default function ItemCount ({stock, initial, onAdd}) {
 
     const [Contador, SetContador] = useState({Disponible: 0, Valor: 0})
     useEffect(() => {
         SetContador({Disponible: Number(stock) - Number(initial), Valor: Number(initial)})
-    },[stock])
+    },[stock, initial])
     
     const Aumentar = ()=>{
         (Contador.Disponible > 0) ? SetContador({ Valor: Contador.Valor + 1, Disponible: Contador.Disponible - 1}) : console.log("STOCK MAXIMO ALCANZADO");
     }
     const Disminuir = ()=>{
         (Contador.Valor > 0) ? SetContador({ Valor: Contador.Valor - 1, Disponible: Contador.Disponible + 1}) : console.log("EL CONTADOR ESTA EN CERO");
-    }
-    
-    function onAdd () {
-        alert(`Agregaste ${Contador.Valor} unidades al carrito`)
     }
 
     return (
@@ -30,8 +26,8 @@ export default function ItemCount ({stock, initial}) {
                     </div>
                 </div>
             </div>
-            <div className="col-sm-5 pl-sm-0">
-                <a href=" " className="btn btn-dark btn-sm btn-block h-100 d-flex align-items-center justify-content-center px-0 background-hover" onClick={onAdd}>Agregar al carrito</a>
+            <div className="col-sm-5 pl-sm-0 d-flex justify-content-end">
+                <button className="btn btn-dark btn-sm btn-block h-100 px-5 background-hover" onClick={()=> onAdd(Contador.Valor)}>Agregar al carrito</button>
             </div>
         </div>
     )

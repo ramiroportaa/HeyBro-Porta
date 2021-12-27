@@ -15,7 +15,7 @@ const Item = ({id, title, price, pictureUrl, stock}) => {
                 </Link>
                 <div className="product-overlay">
                     <ul className="mb-0 list-inline">
-                        <li className="list-inline-item m-0 p-0"><a className="btn btn-sm btn-dark background-hover" href=" ">Agregar al carrito</a></li>
+                        <li className="list-inline-item m-0 p-0"><button className="btn btn-sm btn-dark px-3 background-hover">Agregar al carrito</button></li>
                         {/* PARA MODAL A DESARROLLAR
                         <li className="list-inline-item me-0"><a className="btn btn-sm btn-outline-dark" href={`productView-${id}`}><i className="fas fa-expand"></i></a></li>
                         */}
