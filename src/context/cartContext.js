@@ -1,5 +1,4 @@
 import React from "react";
-import Item from "../components/Item";
 
 export const CartContext = React.createContext([])
 
