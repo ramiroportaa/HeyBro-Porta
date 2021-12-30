@@ -1,4 +1,5 @@
 import React from 'react'
+import {CartProvider} from './context/cartContext';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import * as bootstrap from 'bootstrap';
 import { BrowserRouter, Routes, Route} from 'react-router-dom';
@@ -12,6 +13,7 @@ import ContactoContainer from './components/ContactoContainer';
 function App() {
   return (
     <>
+    <CartProvider>
       <BrowserRouter>
         <NavBar/>
         <Routes>
@@ -22,6 +24,7 @@ function App() {
           <Route exact path="/contacto" element={<ContactoContainer/>}></Route>
         </Routes>
       </BrowserRouter>
+    </CartProvider>
     </>
   );
 }

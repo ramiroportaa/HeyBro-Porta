@@ -2,8 +2,20 @@ import React from 'react'
 import "./Item.css"
 import { Link } from 'react-router-dom'
 import ItemCount from './ItemCount'
+import { CartContext } from '../context/cartContext';
 
 const Item = ({id, title, price, pictureUrl, stock}) => {
+    
+    const useCart = React.useContext(CartContext);
+
+    const addOneItem = ()=>{
+        if (stock >= 1) {
+            useCart.addItem({id: id, title: title, price: price},1)
+        }else{
+            alert ("NO HAY STOCK")
+        }
+    }
+
     return (
         <>
         <div className="product text-center">
@@ -15,7 +27,7 @@ const Item = ({id, title, price, pictureUrl, stock}) => {
                 </Link>
                 <div className="product-overlay">
                     <ul className="mb-0 list-inline">
-                        <li className="list-inline-item m-0 p-0"><button className="btn btn-sm btn-dark px-3 background-hover">Agregar al carrito</button></li>
+                        <li className="list-inline-item m-0 p-0"><button className="btn btn-sm btn-dark px-3 background-hover" onClick={addOneItem}>Agregar al carrito</button></li>
                         {/* PARA MODAL A DESARROLLAR
                         <li className="list-inline-item me-0"><a className="btn btn-sm btn-outline-dark" href={`productView-${id}`}><i className="fas fa-expand"></i></a></li>
                         */}

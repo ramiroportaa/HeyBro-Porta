@@ -1,6 +1,7 @@
 import React, {useState} from 'react'
 import ItemCount from './ItemCount'
 import { Link } from 'react-router-dom'
+import { CartContext } from '../context/cartContext';
 
 const ItemDetail = ({id, title, description, price, pictureUrl, stock, category}) => {
 
@@ -24,10 +25,14 @@ const ItemDetail = ({id, title, description, price, pictureUrl, stock, category}
 
     const [cantidadAgregada, setCantidadAgregada] = useState(0)
 
+    const useCart = React.useContext(CartContext);
+
+
+
     function addToCart (cantidad) {
       if ((stock >= cantidad) && (cantidad > 0)) {
         setCantidadAgregada(cantidad)
-        alert(`Agregaste al carrito ${cantidad} unidad(es) de ${title}`);
+        useCart.addItem({id: id, title: title, price: price},cantidad)
       }else if (stock===0) {
         alert("NO HAY STOCK");  
       }else{
