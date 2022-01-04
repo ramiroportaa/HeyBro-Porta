@@ -16,28 +16,34 @@ const ItemDetail = ({id, title, description, price, pictureUrl, stock, category}
     )
 
     const FinalizarCompra = ()=>(
-      <div className="row align-items-stretch my-4">
+      <div className="row my-4">
+          <p className='text-muted text-center text-md-end'>Ya hay {cantidadAgregada} unidad/es en el carrito <i className="ms-1 fas fa-trash-alt small btn btn-outline-dark" onClick={removeItem}></i></p>
           <div className="d-flex justify-content-center justify-content-md-end">
           <Link to="/cart" className='btn btn-dark background-hover'>Finalizar Compra <span className='ms-1'>→</span></Link>
           </div>
       </div>        
     )
 
-    const [cantidadAgregada, setCantidadAgregada] = useState(0)
-
     const useCart = React.useContext(CartContext);
 
+    const itemCartQuantity = useCart.getItemQuantity(id)
 
+    const [cantidadAgregada, setCantidadAgregada] = useState(itemCartQuantity)
 
     function addToCart (cantidad) {
       if ((stock >= cantidad) && (cantidad > 0)) {
         setCantidadAgregada(cantidad)
-        useCart.addItem({id: id, title: title, price: price},cantidad)
+        useCart.addItem({id: id, title: title, price: price, pictureUrl: pictureUrl},cantidad)
       }else if (stock===0) {
         alert("NO HAY STOCK");  
       }else{
         alert("Ingrese al menos 1 unidad")
       }
+    }
+
+    function removeItem () {
+      useCart.removeItem(id)
+      setCantidadAgregada(0)
     }
 
     return (
@@ -73,7 +79,7 @@ const ItemDetail = ({id, title, description, price, pictureUrl, stock, category}
                 }
 
                 <div className='d-flex justify-content-center justify-content-md-end'>
-                  <Link to="/productos" className='btn btn-dark background-hover'>Volver al catálogo <span className='ms-1'>←</span></Link>
+                  <Link to="/productos" className='btn btn-outline-dark'>Volver al catálogo <span className='ms-1'>←</span></Link>
                 </div>
             </div>
         </div>

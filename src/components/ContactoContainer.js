@@ -7,9 +7,9 @@ const ContactoContainer = () => {
         <div className='container'>
             <Common.Title text="CONTACTO"></Common.Title>
             <Common.Hr></Common.Hr>
-            <div class="row">
-            <div class="col-md-12">
-                <div class="well well-sm form">
+            <div className="row">
+            <div className="col-md-12">
+                <div className="well well-sm form">
                     <FormContacto/>
                 </div>
             </div>

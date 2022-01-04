@@ -9,6 +9,7 @@ import Home from './components/Home';
 import ItemListContainer from './components/ItemListContainer';
 import ItemDetailContainer from './components/ItemDetailContainer';
 import ContactoContainer from './components/ContactoContainer';
+import Cart from './components/Cart';
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
           <Route exact path="/productos/category/:categoryId" element={<ItemListContainer greeting="CATEGORIA..."/>}></Route>
           <Route exact path="/productos/item/:id" element={<ItemDetailContainer/>}></Route>
           <Route exact path="/contacto" element={<ContactoContainer/>}></Route>
+          <Route exact path="/cart" element={<Cart/>}></Route>
         </Routes>
       </BrowserRouter>
     </CartProvider>

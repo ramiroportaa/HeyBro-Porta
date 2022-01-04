@@ -20,6 +20,7 @@ export default function ItemListContainer (props) {
     const Greeting = isCategory ? categoryId : props.greeting;
     const [productos, setProductos] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
+    const categoryList = ["remeras", "pantalones", "bermudas"]
     
     useEffect(() => {
         /* Async mock (simulacion de proceso asincronico usando promise) */
@@ -38,7 +39,6 @@ export default function ItemListContainer (props) {
         return (setIsLoading(true))
     }, [categoryId, isCategory])
 
-    const categoryList = ["remeras", "pantalones", "bermudas"]
  
     return (
         <div className="container">

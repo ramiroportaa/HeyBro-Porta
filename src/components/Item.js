@@ -7,11 +7,13 @@ const Item = ({id, title, price, pictureUrl, stock}) => {
     
     const useCart = React.useContext(CartContext);
 
+    const itemCartQuantity = useCart.getItemQuantity(id)
+
     const addOneItem = ()=>{
-        if (stock >= 1) {
-            useCart.addItem({id: id, title: title, price: price},1)
+        if ((stock >= 1) && (stock > itemCartQuantity)) {
+            useCart.addItem({id: id, title: title, price: price, pictureUrl: pictureUrl},1)
         }else{
-            alert ("NO HAY STOCK")
+            alert ("NO HAY STOCK SUFICIENTE")
         }
     }
 
@@ -26,7 +28,7 @@ const Item = ({id, title, price, pictureUrl, stock}) => {
                 </Link>
                 <div className="product-overlay">
                     <ul className="mb-0 list-inline">
-                        <li className="list-inline-item m-0 p-0"><button className="btn btn-sm btn-dark px-3 background-hover" onClick={addOneItem}>Agregar al carrito</button></li>
+                        <li className="list-inline-item m-0 p-0"><button className="btn btn-sm btn-dark px-3 background-hover" onClick={addOneItem}>{useCart.isInCart(id) ? "Agregar OTRA unidad" : "Agregar al carrito"}</button></li>
                         {/* PARA MODAL A DESARROLLAR
                         <li className="list-inline-item me-0"><a className="btn btn-sm btn-outline-dark" href={`productView-${id}`}><i className="fas fa-expand"></i></a></li>
                         */}
