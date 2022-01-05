@@ -94,7 +94,7 @@ const Cart = () => {
 
     return (
         <>
-        <div className='container'>
+        <div className='container mb-5'>
             <Common.Title text="Carrito"></Common.Title>
             <Common.Hr></Common.Hr>
             <div className="row">
