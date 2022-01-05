@@ -1,7 +1,7 @@
 import React from 'react';
 import Item from './Item';
 
-const ItemList = React.memo(({items}) => {
+const ItemList =({items}) => {
     const productos = items
     return (
         <div className="row">
@@ -15,6 +15,6 @@ const ItemList = React.memo(({items}) => {
             }        
         </div>
     )
-})
+}
 
 export default ItemList

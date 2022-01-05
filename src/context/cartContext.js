@@ -92,10 +92,6 @@ export const CartProvider = ({children}) => {
         )
     }
 
-    React.useEffect(()=>{
-        console.log(cart);
-    },[cart])
-
     return (
         <CartContext.Provider value={{cart, isInCart, getItemQuantity, addItem, removeItem, clear, aplicarDescuento}}>
             {children}
