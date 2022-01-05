@@ -41,7 +41,7 @@ export default function ItemListContainer (props) {
 
  
     return (
-        <div className="container">
+        <div className="container mb-5">
             <Common.Title text={Greeting}></Common.Title>
             <Common.Hr></Common.Hr>
             <div className='row'>

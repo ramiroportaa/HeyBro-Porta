@@ -4,7 +4,7 @@ import "./FormContacto.css"
 const FormContacto = () => {
     return (
         <>
-        <form>
+        <form className='mb-5'>
             <fieldset>
                 <legend className="text-center">Formulario de Contacto</legend>
 

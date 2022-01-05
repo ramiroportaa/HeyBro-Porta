@@ -10,6 +10,7 @@ import ItemListContainer from './components/ItemListContainer';
 import ItemDetailContainer from './components/ItemDetailContainer';
 import ContactoContainer from './components/ContactoContainer';
 import Cart from './components/Cart';
+import Footer from './components/Footer';
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
           <Route exact path="/contacto" element={<ContactoContainer/>}></Route>
           <Route exact path="/cart" element={<Cart/>}></Route>
         </Routes>
+        <Footer/>
       </BrowserRouter>
     </CartProvider>
     </>

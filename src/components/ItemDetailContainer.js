@@ -26,7 +26,7 @@ const ItemDetailContainer = () => {
     }, [id])
 
     return (
-        <div className='container'>
+        <div className='container mb-5'>
             <Common.Title text="Detalle"></Common.Title>
             <Common.Hr></Common.Hr>
             {isLoading ? <Common.Loading/> :
