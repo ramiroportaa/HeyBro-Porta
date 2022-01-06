@@ -2,25 +2,23 @@ import React, {useState, useEffect} from 'react'
 import { useParams } from 'react-router-dom'
 import Common from './Common'
 import ItemDetail from './ItemDetail'
-import { DB } from './ItemListContainer'
+import { getFirestore, doc, getDoc } from 'firebase/firestore/lite'
 
 const ItemDetailContainer = () => {
     const {id} = useParams();
     const [item, setItem] = useState({})
     const [isLoading, setIsLoading] = useState(true);
     useEffect(() => {
-        /* Async mock (simulacion de proceso asincronico usando promise) */
-        const getItem = new Promise((resolve, reject) => {
-            setTimeout(()=>{
-                const find = DB.find(item => item.id === Number(id));
-                resolve(
-                    find
-                )
-            }, 2000)
-        })
-        getItem.then((res)=>{
-            setItem(res);
-            setIsLoading(false)
+        const db = getFirestore();
+        const itemRef = doc(db, "items", id);
+        getDoc(itemRef).then((snapshot)=>{
+            if (snapshot.exists()){
+                setItem({id: snapshot.id, ...snapshot.data()})
+            }
+        }).catch((error)=>{
+            console.log("ERROR buscando el item", error);
+        }).finally(()=>{
+            setIsLoading(false);
         })
         return (setIsLoading(true))
     }, [id])

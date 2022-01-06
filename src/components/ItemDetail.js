@@ -3,7 +3,7 @@ import ItemCount from './ItemCount'
 import { Link } from 'react-router-dom'
 import { CartContext } from '../context/cartContext';
 
-const ItemDetail = ({id, title, description, price, pictureUrl, stock, category}) => {
+const ItemDetail = ({id, title, description, price, pictureUrl, stock, categoryId}) => {
 
     const Stars = ()=>(
         <ul className="list-inline mb-2">
@@ -66,7 +66,7 @@ const ItemDetail = ({id, title, description, price, pictureUrl, stock, category}
                 </p>
                 <ul className="list-unstyled small d-inline-block">
                 <li className="px-3 py-2 mb-1 bg-white"><strong className="text-uppercase">ID del producto: </strong><span className="ms-2 text-muted">{id}</span></li>
-                <li className="px-3 py-2 mb-1 bg-white text-muted"><strong className="text-uppercase text-dark">Categoria: </strong><Link to={`/productos/category/${category}`} className="reset-anchor ms-2 text-uppercase">{category}</Link></li>
+                <li className="px-3 py-2 mb-1 bg-white text-muted"><strong className="text-uppercase text-dark">Categoria: </strong><Link to={`/productos/category/${categoryId}`} className="reset-anchor ms-2 text-uppercase">{categoryId}</Link></li>
                 <li className="px-3 py-2 mb-1 bg-white"><strong className="text-uppercase">Stock disponible: </strong><span className="ms-2 text-muted">{stock}</span></li>
               </ul>
 

@@ -2,7 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 
 const Footer = () => {
-    const categoryList = ["remeras", "pantalones", "bermudas"]
+    const categoryList = ["remeras", "pantalones", "bermudas", "camisas"]
 
     return (
         <footer className="bg-dark text-center text-white">
@@ -25,13 +25,13 @@ const Footer = () => {
               <div className="col-lg-4 col-md-6 mb-4 mb-md-0">
                 <h5 className="text-uppercase">Links</h5>      
                 <ul className="list-unstyled mb-0">
-                  <li>
+                  <li key="1">
                     <Link to="/" className="text-white">INICIO</Link>
                   </li>
-                  <li>
+                  <li key="2">
                     <Link to="/productos" className="text-white">E-SHOP</Link>
                   </li>
-                  <li>
+                  <li key="3">
                     <Link to="contacto" className="text-white">CONTACTO</Link>
                   </li>
                 </ul>
@@ -41,7 +41,7 @@ const Footer = () => {
                 
                 <ul className="list-unstyled mb-0">
                     {categoryList.map(cat =>(
-                        <li>
+                        <li key={cat}>
                             <Link to={`/productos/category/${cat}`} className="text-white text-uppercase">{cat}</Link>
                         </li>
                     ))}

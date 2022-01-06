@@ -2,17 +2,7 @@ import React, {useState, useEffect} from 'react'
 import { Link, useParams } from 'react-router-dom';
 import ItemList from './ItemList';
 import Common from './Common';
-
-/* Creamos DB para simular la lista de productos que deberia otorgar el backend */
-export const DB = [{id: 1, title: "Bermuda negra FRANKLIN", description: "Bermuda clasica de gabardina para todos tus dias de verano", price: 3000, pictureUrl: "/img//1.jpg", stock: 4, category:"bermudas"},
-            {id: 2, title: "Jean azul intenso INDO", description: "Jean semi-chupin azul para todo uso", price: 4000, pictureUrl: "/img/2.jpg", stock: 0, category:"pantalones"},
-            {id: 3, title: "Jean celeste con roturas KAFKA", description: "Tremendo Jean rigido y recto con roturas para el dia o la noche", price: 4500, pictureUrl: "/img/3.jpg", stock:1, category:"pantalones"},
-            {id: 4, title: "Remera batik MIGUEL", description: "Tremenda remera que va con vos", price: 2000, pictureUrl: "/img/4.jpg", stock:2, category:"remeras"},
-            {id: 5, title: "Jogger beige CAMUS", description: "Comodidad para toda ocasion", price: 4000, pictureUrl: "/img/5.jpg", stock:3, category:"pantalones"},
-            {id: 6, title: "Jean azul PEPE", description: "Jean elastizado chupin con leves roturas, color azul", price: 3500, pictureUrl: "/img/6.jpg", stock:0, category:"pantalones"},
-            {id: 7, title: "Remera lisa blanca VILO", description: "Tremenda remera que va con vos", price: 2000, pictureUrl: "/img/7.jpg", stock:5, category:"remeras"},
-            {id: 8, title: "Remera lisa negra VILO", description: "Tremenda remera que va con vos", price: 2000, pictureUrl: "/img/8.jpg", stock:0, category:"remeras"}
-        ];
+import { getFirestore, collection, getDocs, query, where } from 'firebase/firestore/lite';
 
 export default function ItemListContainer (props) {
     const {categoryId} = useParams();
@@ -20,22 +10,23 @@ export default function ItemListContainer (props) {
     const Greeting = isCategory ? categoryId : props.greeting;
     const [productos, setProductos] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
-    const categoryList = ["remeras", "pantalones", "bermudas"]
+    const categoryList = ["remeras", "pantalones", "bermudas", "camisas"]
     
     useEffect(() => {
-        /* Async mock (simulacion de proceso asincronico usando promise) */
-        const API = new Promise((resolve, reject) => {
-            setTimeout(()=>{
-                const result = isCategory ? DB.filter(item => item.category === categoryId) : DB;
-                resolve(
-                    result
-                )
-            }, 2000)
+        const db = getFirestore();
+        const itemCollection = collection(db, "items");
+        const itemForCategory = isCategory && query(itemCollection, where("categoryId", "==", categoryId))
+        getDocs(isCategory ? itemForCategory : itemCollection).then((querySnapshot)=>{
+            if (querySnapshot.size === 0){
+                console.log("NO HAY RESULTADOS");
+            }
+            setProductos(querySnapshot.docs.map(doc =>({id: doc.id, ...doc.data()})));
+        }).catch((error)=>{
+            console.log("ERROR buscando items", error);
+        }).finally(()=>{
+            setIsLoading(false);
         })
-        API.then((res)=>{
-            setProductos(res)
-            setIsLoading(false)
-        })
+
         return (setIsLoading(true))
     }, [categoryId, isCategory])
 
@@ -55,8 +46,10 @@ export default function ItemListContainer (props) {
                 </div>
                 <div className="col-lg-9 order-1 order-lg-2 mb-5 mb-lg-0">
                     <div className="row mb-3 align-items-center justify-content-center">
-                        {isLoading ? <Common.Loading/> :
-                        <ItemList items={productos}></ItemList>
+                        {isLoading ? 
+                                    <Common.Loading/>
+                                    :
+                                    (productos.length ? <ItemList items={productos}></ItemList> : <h4 className='text-center'>NO SE ENCONTRARON RESULTADOS</h4>)
                         }
                     </div>
                 </div>
