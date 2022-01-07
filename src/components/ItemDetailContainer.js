@@ -2,24 +2,20 @@ import React, {useState, useEffect} from 'react'
 import { useParams } from 'react-router-dom'
 import Common from './Common'
 import ItemDetail from './ItemDetail'
-import { getFirestore, doc, getDoc } from 'firebase/firestore/lite'
+import { getDocument } from '../services/getData'
 
 const ItemDetailContainer = () => {
     const {id} = useParams();
     const [item, setItem] = useState({})
     const [isLoading, setIsLoading] = useState(true);
     useEffect(() => {
-        const db = getFirestore();
-        const itemRef = doc(db, "items", id);
-        getDoc(itemRef).then((snapshot)=>{
-            if (snapshot.exists()){
-                setItem({id: snapshot.id, ...snapshot.data()})
-            }
-        }).catch((error)=>{
-            console.log("ERROR buscando el item", error);
-        }).finally(()=>{
+        //Llamo a fn anonima para obtener el documento por id y setear el state del item que luego se renderea.
+        (async function () {
+            const snapshot = await getDocument(id)
+            setItem({id: snapshot.id, ...snapshot.data()})
             setIsLoading(false);
-        })
+        })();
+
         return (setIsLoading(true))
     }, [id])
 
