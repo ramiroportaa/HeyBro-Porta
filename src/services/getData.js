@@ -1,4 +1,4 @@
-import { getFirestore, collection, getDocs, query, where, limit, startAt, doc, getDoc } from 'firebase/firestore/lite';
+import { getFirestore, collection, getDocs, query, where, limit, startAt, doc, getDoc, addDoc } from 'firebase/firestore/lite';
 
 //Function para obtener la coleccion COMPLETA. Limitada en caso de pasar un parametro "max" y devuelve hasta el limite a partir del item que se pase por parametro.
 export const getCollection = (max=9999, item)=>{
@@ -24,4 +24,10 @@ export const getDocument = (id)=>{
     return data
 }
 
-
+//Function para ENVIAR una orden.
+export const setOrder = (order)=>{
+    const db = getFirestore();
+    const ordersCollection = collection(db, "orders")
+    const data = addDoc(ordersCollection, order)
+    return data
+}
