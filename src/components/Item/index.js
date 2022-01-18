@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 import { CartContext } from '../../context/cartContext';
 
 const Item = ({id, title, price, pictureUrl, stock}) => {
-    
+
     const useCart = React.useContext(CartContext);
 
     const itemCartQuantity = useCart.getItemQuantity(id)
@@ -29,9 +29,7 @@ const Item = ({id, title, price, pictureUrl, stock}) => {
                 <div className="product-overlay">
                     <ul className="mb-0 list-inline">
                         <li className="list-inline-item m-0 p-0"><button className="btn btn-sm btn-dark px-3 background-hover" onClick={addOneItem}>{useCart.isInCart(id) ? "Agregar OTRA unidad" : "Agregar al carrito"}</button></li>
-                        {/* PARA MODAL A DESARROLLAR
-                        <li className="list-inline-item me-0"><a className="btn btn-sm btn-outline-dark" href={`productView-${id}`}><i className="fas fa-expand"></i></a></li>
-                        */}
+                        <li className="list-inline-item me-0"><Link to={`/productos/item/${id}`} className="btn btn-sm btn-outline-dark background-hover"><i className="fas fa-expand"></i></Link></li>               
                     </ul>
                 </div>
             </div>
