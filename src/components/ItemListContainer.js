@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react'
-import { Link, useParams } from 'react-router-dom';
+import { Link, NavLink, useParams } from 'react-router-dom';
 import ItemList from './ItemList';
 import Common from './Common';
 
@@ -17,7 +17,7 @@ export default function ItemListContainer (props) {
     //Para paginacion numerica
     const [itemsList, setItemsList] = useState([])
     const [pages, setPages] = useState([])
-    const limit = 3
+    const limit = 8
     
     useEffect(() => {
         //Llamo a funcion anonima para obtener todos los documentos de la coleccion de firestore y setear la paginacion.
@@ -78,7 +78,7 @@ export default function ItemListContainer (props) {
                     <nav aria-label="Page navigation example">
                         <ul class="pagination justify-content-center justify-content-lg-end">
                         { pages.map(p=>(
-                            <li key={p} onClick={handleClick} class="page-item"><p class="page-link">{p}</p></li>
+                            <li key={p} onClick={handleClick} className="page-item"><Link to="" className="page-link text-dark background-hover">{p}</Link></li>
                         )) }
                         </ul>
                     </nav>
