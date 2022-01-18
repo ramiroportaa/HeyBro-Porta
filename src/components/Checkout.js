@@ -42,7 +42,7 @@ const Checkout = () => {
     //Regex de validacion formulario.
     const nombreRegex = /^[a-zA-Z+ ?]{3,16}$/
     const emailRegex = /^[a-zA-Z0-9\._-]+@{1}[a-zA-Z0-9-]{2,30}[.][a-zA-Z]{2,4}([.][a-zA-Z]{2,4})?$/
-    const telRegex = /^(?:(?:00)?549?)?0?(?:11|[2368]\d)(?:(?=\d{0,2}15)\d{2})??\d{8}$/
+    const telRegex = /^(?:(?:00)?549?)?0?(?:11|[2368]\d)(?:(?=\d{0,2}15)\d{2})??\d{7,8}$/
     const dniRegex = /^[\d]{1,3}\.?[\d]{3,3}\.?[\d]{3,3}$/
     const domicilioRegex = /^[a-zA-Z0-9+ ?\._-]{3,50}$/
 
@@ -170,7 +170,7 @@ const Checkout = () => {
 
 
             }else{
-                alert("DATOS DEL FORM INCORRECTOS");
+                alert("DATOS DEL FORMULARIO INCORRECTOS, REVISE CAMPOS EN ROJO");
             }
         }else{
             if ((nombre && apellido && email && telefono && dni && domicilio && ciudad && provincia)){
@@ -194,7 +194,7 @@ const Checkout = () => {
                 );
 
             }else{
-                alert("DATOS DEL FORM INCORRECTOS");
+                alert("DATOS DEL FORMULARIO INCORRECTOS, REVISE CAMPOS EN ROJO");
             } 
         }
     }
@@ -214,35 +214,35 @@ const Checkout = () => {
                                                     <div class="row">
                                                         <div class="col-lg-6 form-group">
                                                         <label class="text-small text-uppercase" for="nombre">Nombre</label>
-                                                        <input class="form-input form-control form-control-lg" id="nombre" type="text" placeholder="Ingresa tu nombre" onChange={(e)=>valorNombre(e.target.value ,'fac')}/>
+                                                        <input className={`form-input form-control form-control-lg ${nombre ? "border border-success" : "border border-danger"}`} id="nombre" type="text" placeholder="Ingresa tu nombre" onChange={(e)=>valorNombre(e.target.value ,'fac')}/>
                                                         </div>
                                                         <div class="col-lg-6 form-group">
                                                         <label class="text-small text-uppercase" for="apellido">Apellido</label>
-                                                        <input class="form-input form-control form-control-lg" id="apellido" type="text" placeholder="Ingresa tu apellido" onChange={(e)=>valorApellido(e.target.value ,'fac')}/>
+                                                        <input className={`form-input form-control form-control-lg ${apellido ? "border border-success" : "border border-danger"}`} id="apellido" type="text" placeholder="Ingresa tu apellido" onChange={(e)=>valorApellido(e.target.value ,'fac')}/>
                                                         </div>
                                                         <div class="col-lg-6 form-group">
                                                         <label class="text-small text-uppercase" for="email">Email</label>
-                                                        <input class="form-input form-control form-control-lg" id="email" type="email" placeholder="ej. Juan@ejemplo.com" onChange={(e)=>valorEmail(e.target.value ,'fac')}/>
+                                                        <input className={`form-input form-control form-control-lg ${email ? "border border-success" : "border border-danger"}`} id="email" type="email" placeholder="ej. Juan@ejemplo.com" onChange={(e)=>valorEmail(e.target.value ,'fac')}/>
                                                         </div>
                                                         <div class="col-lg-6 form-group">
                                                         <label class="text-small text-uppercase" for="tel">Telefono</label>
-                                                        <input class="form-input form-control form-control-lg" id="tel" type="tel" placeholder="ej. 2645279783" onChange={(e)=>valorTel(e.target.value ,'fac')}/>
+                                                        <input className={`form-input form-control form-control-lg ${telefono ? "border border-success" : "border border-danger"}`} id="tel" type="tel" placeholder="ej. 2645279783" onChange={(e)=>valorTel(e.target.value ,'fac')}/>
                                                         </div>
                                                         <div class="col-lg-6 form-group">
-                                                        <label class="text-small text-uppercase" for="dni">DNI / CUIT</label>
-                                                        <input class="form-input form-control form-control-lg" id="dni" type="number" placeholder="ej. 40578954" onChange={(e)=>valorDni(e.target.value ,'fac')}/>
+                                                        <label class="text-small text-uppercase" for="dni">DNI (sin puntos)</label>
+                                                        <input className={`form-input form-control form-control-lg ${dni ? "border border-success" : "border border-danger"}`} id="dni" type="number" placeholder="ej. 40578954" onChange={(e)=>valorDni(e.target.value ,'fac')}/>
                                                         </div>
                                                         <div class="col-lg-12 form-group">
                                                         <label class="text-small text-uppercase" for="domicilio">Domicilio</label>
-                                                        <input class="form-input form-control form-control-lg" id="domicilio" type="text" placeholder="Nombre de la calle y numeración" onChange={(e)=>valorDomicilio(e.target.value ,'fac')}/>
+                                                        <input className={`form-input form-control form-control-lg ${domicilio ? "border border-success" : "border border-danger"}`} id="domicilio" type="text" placeholder="Nombre de la calle y numeración" onChange={(e)=>valorDomicilio(e.target.value ,'fac')}/>
                                                         </div>
                                                         <div class="col-lg-6 form-group">
                                                         <label class="text-small text-uppercase" for="ciudad">Ciudad</label>
-                                                        <input class="form-input form-control form-control-lg" id="ciudad" type="text" onChange={(e)=>valorCiudad(e.target.value ,'fac')}/>
+                                                        <input className={`form-input form-control form-control-lg ${ciudad ? "border border-success" : "border border-danger"}`} id="ciudad" type="text" onChange={(e)=>valorCiudad(e.target.value ,'fac')}/>
                                                         </div>
                                                         <div class="col-lg-6 form-group">
                                                         <label class="text-small text-uppercase" for="provincia">Provincia</label>
-                                                        <input class="form-input form-control form-control-lg" id="provincia" type="text" onChange={(e)=>valorProvincia(e.target.value ,'fac')}/>
+                                                        <input className={`form-input form-control form-control-lg ${provincia ? "border border-success" : "border border-danger"}`} id="provincia" type="text" onChange={(e)=>valorProvincia(e.target.value ,'fac')}/>
                                                         </div>
                                                         <div class="col-lg-6 form-group mt-3">
                                                         <div class="custom-control custom-checkbox">
@@ -257,35 +257,35 @@ const Checkout = () => {
                                                             </div>
                                                             <div class="col-lg-6 form-group">
                                                             <label class="text-small text-uppercase" for="nombreEnvio">Nombre</label>
-                                                            <input class="form-input form-control form-control-lg" id="nombreEnvio" type="text" placeholder="Ingresa tu nombre" onChange={(e)=>valorNombre(e.target.value ,'envio')}/>
+                                                            <input className={`form-input form-control form-control-lg ${nombreEnvio ? "border border-success" : "border border-danger"}`} id="nombreEnvio" type="text" placeholder="Ingresa tu nombre" onChange={(e)=>valorNombre(e.target.value ,'envio')}/>
                                                             </div>
                                                             <div class="col-lg-6 form-group">
                                                             <label class="text-small text-uppercase" for="apellidoEnvio">Apellido</label>
-                                                            <input class="form-input form-control form-control-lg" id="apellidoEnvio" type="text" placeholder="Ingresa tu apellido" onChange={(e)=>valorApellido(e.target.value ,'envio')}/>
+                                                            <input className={`form-input form-control form-control-lg ${apellidoEnvio ? "border border-success" : "border border-danger"}`} id="apellidoEnvio" type="text" placeholder="Ingresa tu apellido" onChange={(e)=>valorApellido(e.target.value ,'envio')}/>
                                                             </div>
                                                             <div class="col-lg-6 form-group">
                                                             <label class="text-small text-uppercase" for="emailEnvio">Email</label>
-                                                            <input class="form-input form-control form-control-lg" id="emailEnvio" type="email" placeholder="ej. Juan@ejemplo.com" onChange={(e)=>valorEmail(e.target.value ,'envio')}/>
+                                                            <input className={`form-input form-control form-control-lg ${emailEnvio ? "border border-success" : "border border-danger"}`} id="emailEnvio" type="email" placeholder="ej. Juan@ejemplo.com" onChange={(e)=>valorEmail(e.target.value ,'envio')}/>
                                                             </div>
                                                             <div class="col-lg-6 form-group">
                                                             <label class="text-small text-uppercase" for="telEnvio">Telefono</label>
-                                                            <input class="form-input form-control form-control-lg" id="telEnvio" type="tel" placeholder="ej. 2645279783" onChange={(e)=>valorTel(e.target.value ,'envio')}/>
+                                                            <input className={`form-input form-control form-control-lg ${telefonoEnvio ? "border border-success" : "border border-danger"}`} id="telEnvio" type="tel" placeholder="ej. 2645279783" onChange={(e)=>valorTel(e.target.value ,'envio')}/>
                                                             </div>
                                                             <div class="col-lg-6 form-group">
-                                                            <label class="text-small text-uppercase" for="dniEnvio">DNI</label>
-                                                            <input class="form-input form-control form-control-lg" id="dniEnvio" type="number" placeholder="ej. 40578954" onChange={(e)=>valorDni(e.target.value ,'envio')}/>
+                                                            <label class="text-small text-uppercase" for="dniEnvio">DNI (sin puntos)</label>
+                                                            <input className={`form-input form-control form-control-lg ${dniEnvio ? "border border-success" : "border border-danger"}`} id="dniEnvio" type="number" placeholder="ej. 40578954" onChange={(e)=>valorDni(e.target.value ,'envio')}/>
                                                             </div>
                                                             <div class="col-lg-12 form-group">
                                                             <label class="text-small text-uppercase" for="domicilioEnvio">Domicilio</label>
-                                                            <input class="form-input form-control form-control-lg" id="domicilioEnvio" type="text" placeholder="Nombre de la calle y numeración" onChange={(e)=>valorDomicilio(e.target.value ,'envio')}/>
+                                                            <input className={`form-input form-control form-control-lg ${domicilioEnvio ? "border border-success" : "border border-danger"}`} id="domicilioEnvio" type="text" placeholder="Nombre de la calle y numeración" onChange={(e)=>valorDomicilio(e.target.value ,'envio')}/>
                                                             </div>
                                                             <div class="col-lg-6 form-group">
                                                             <label class="text-small text-uppercase" for="ciudadEnvio">Ciudad</label>
-                                                            <input class="form-input form-control form-control-lg" id="ciudadEnvio" type="text" onChange={(e)=>valorCiudad(e.target.value ,'envio')}/>
+                                                            <input className={`form-input form-control form-control-lg ${ciudadEnvio ? "border border-success" : "border border-danger"}`} id="ciudadEnvio" type="text" onChange={(e)=>valorCiudad(e.target.value ,'envio')}/>
                                                             </div>
                                                             <div class="col-lg-6 form-group">
                                                             <label class="text-small text-uppercase" for="provinciaEnvio">Provincia</label>
-                                                            <input class="form-input form-control form-control-lg" id="provinciaEnvio" type="text" onChange={(e)=>valorProvincia(e.target.value ,'envio')}/>
+                                                            <input className={`form-input form-control form-control-lg ${provinciaEnvio ? "border border-success" : "border border-danger"}`} id="provinciaEnvio" type="text" onChange={(e)=>valorProvincia(e.target.value ,'envio')}/>
                                                             </div>
                                                         </div>
                                                         </div>
