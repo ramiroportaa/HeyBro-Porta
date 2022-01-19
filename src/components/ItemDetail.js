@@ -2,6 +2,7 @@ import React, {useState} from 'react'
 import ItemCount from './ItemCount'
 import { Link } from 'react-router-dom'
 import { CartContext } from '../context/cartContext';
+import { ToastContainer, toast } from 'react-toastify';
 
 const ItemDetail = ({id, title, description, price, pictureUrl, stock, categoryId}) => {
 
@@ -34,16 +35,18 @@ const ItemDetail = ({id, title, description, price, pictureUrl, stock, categoryI
       if ((stock >= cantidad) && (cantidad > 0)) {
         setCantidadAgregada(cantidad)
         useCart.addItem({id: id, title: title, price: price, pictureUrl: pictureUrl},cantidad)
+        toast.success("SE AGREGO " + cantidad + " UNIDAD/ES DE " + title)
       }else if (stock===0) {
-        alert("NO HAY STOCK");  
+        toast.warn("NO HAY STOCK");  
       }else{
-        alert("Ingrese al menos 1 unidad")
+        toast.info("Ingrese al menos 1 unidad")
       }
     }
 
     function removeItem () {
       useCart.removeItem(id)
       setCantidadAgregada(0)
+      toast.warn("Se elimino " + title + " del carrito");
     }
 
     return (
@@ -82,6 +85,7 @@ const ItemDetail = ({id, title, description, price, pictureUrl, stock, categoryI
                   <Link to="/productos" className='btn btn-outline-dark'>Volver al catálogo <span className='ms-1'>←</span></Link>
                 </div>
             </div>
+            <ToastContainer/>
         </div>
     )
 }

@@ -2,6 +2,7 @@ import React from 'react'
 import "./Item.css"
 import { Link } from 'react-router-dom'
 import { CartContext } from '../../context/cartContext';
+import { ToastContainer, toast } from 'react-toastify';
 
 const Item = ({id, title, price, pictureUrl, stock}) => {
 
@@ -12,8 +13,10 @@ const Item = ({id, title, price, pictureUrl, stock}) => {
     const addOneItem = ()=>{
         if ((stock >= 1) && (stock > itemCartQuantity)) {
             useCart.addItem({id: id, title: title, price: price, pictureUrl: pictureUrl},1)
+            useCart.isInCart(id) ? toast.success("SE AGREGO OTRA UNIDAD DE " + title) : toast.success("SE AGREGO 1 UNIDAD DE " + title)
+            
         }else{
-            alert ("NO HAY STOCK SUFICIENTE")
+            toast.warn ("NO HAY STOCK SUFICIENTE DE " + title)
         }
     }
 
@@ -36,6 +39,7 @@ const Item = ({id, title, price, pictureUrl, stock}) => {
             <h6 className="reset-anchor"> <Link to={`/productos/item/${id}`} className='a'>{title}</Link></h6>
             <p className="small text-muted">${price}.-</p>
         </div>
+        <ToastContainer />
         </>
     )
 }

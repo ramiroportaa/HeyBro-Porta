@@ -2,6 +2,7 @@ import React from 'react'
 import { CartContext } from '../context/cartContext'
 import { Link } from 'react-router-dom'
 import Common from './Common'
+import { ToastContainer, toast } from 'react-toastify';
 
 const Cart = () => {
     const useCart = React.useContext(CartContext);
@@ -13,8 +14,13 @@ const Cart = () => {
         if (value === "coderhouse") {
             const porcentaje = 10;
             useCart.aplicarDescuento(porcentaje)
-        }else {
-            alert("El cupon ingresado no es valido");
+            toast.success(`"`+value+`"` + ". Se aplico correctamente")
+        }
+        else if(value === ""){
+            toast.warn("Ingrese algun cupon");
+        }
+        else {
+            toast.warn("El cupon ingresado no es valido");
         }
     }
 
@@ -110,6 +116,7 @@ const Cart = () => {
 
             </div>
         </div>
+        <ToastContainer />
         </>
     )
 }

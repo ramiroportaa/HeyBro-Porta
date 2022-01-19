@@ -3,6 +3,7 @@ import { CartContext } from '../context/cartContext'
 import { Link } from 'react-router-dom'
 import Common from './Common'
 import { setOrder } from '../services/getData'
+import { ToastContainer, toast } from 'react-toastify';
 
 const Checkout = () => {
     //Almacenamos los valores a usar del CartContext.
@@ -161,16 +162,25 @@ const Checkout = () => {
                     addressee: {address: domicilioEnvio, city: ciudadEnvio, dni: dniEnvio, email: emailEnvio, lastName: apellidoEnvio, name: nombreEnvio, phone: telefonoEnvio, province: provinciaEnvio}
                 }
 
-                setOrder(order)
-                .then(({id})=> alert(id),
-                    //Borro los datos del carrito
-                    useCart.clear()
-                );
-
-
-
+                const prom = setOrder(order)
+                toast.promise(prom,
+                    {
+                        pending: 'Enviando orden...',
+                        success: {
+                            render({data}){
+                                useCart.clear()
+                                return `Enviada con éxito 👌.
+                                        Su n° de orden es: ${data.id}`
+                            },
+                            autoClose: false,
+                            closeOnClick: false,
+                            draggable: false
+                            },
+                        error: 'Orden rechazada 🤯',
+                    })
+                    
             }else{
-                alert("DATOS DEL FORMULARIO INCORRECTOS, REVISE CAMPOS EN ROJO");
+                toast.error("DATOS DEL FORMULARIO INCORRECTOS, REVISE CAMPOS EN ROJO");
             }
         }else{
             if ((nombre && apellido && email && telefono && dni && domicilio && ciudad && provincia)){
@@ -187,14 +197,25 @@ const Checkout = () => {
                     total: total
                 }
 
-                setOrder(order)
-                .then(({id})=> alert(id),
-                    //Borro los datos del carrito
-                    useCart.clear()
-                );
+                const prom = setOrder(order)
+                toast.promise(prom,
+                    {
+                        pending: 'Enviando orden...',
+                        success: {
+                            render({data}){
+                                useCart.clear()
+                                return `Enviada con éxito 👌.
+                                        Su n° de orden es: ${data.id}`
+                            },
+                            autoClose: false,
+                            closeOnClick: false,
+                            draggable: false
+                            },
+                        error: 'Orden rechazada 🤯',
+                    })
 
             }else{
-                alert("DATOS DEL FORMULARIO INCORRECTOS, REVISE CAMPOS EN ROJO");
+                toast.error("DATOS DEL FORMULARIO INCORRECTOS, REVISE CAMPOS EN ROJO");
             } 
         }
     }
@@ -348,6 +369,7 @@ const Checkout = () => {
 
             </div>
         </div>
+        <ToastContainer />
         </>
     )
 }
