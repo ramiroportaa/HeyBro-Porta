@@ -1,5 +1,6 @@
 import React, {useState} from 'react'
 import "./FormContacto.css"
+import { ToastContainer, toast } from 'react-toastify';
 
 const FormContacto = () => {
     //Regex de validacion formulario.
@@ -33,14 +34,14 @@ const FormContacto = () => {
     const handleSubmit = (e)=>{
         e.preventDefault()
         if (nombre && apellido && email && telefono){
-            alert("MENSAJE ENVIADO")
+            toast.success("MENSAJE ENVIADO")
             e.target.reset()
             setNombre()
             setApellido()
             setEmail()
             setTelefono()
         }else{
-            alert("ERROR, Revise campos en rojo")
+            toast.error("ERROR, Revise campos en rojo")
         }
     }
 
@@ -91,6 +92,7 @@ const FormContacto = () => {
                 </div>
             </fieldset>
         </form>
+        <ToastContainer />
         </>
     )
 }

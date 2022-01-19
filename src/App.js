@@ -12,6 +12,7 @@ import ContactoContainer from './components/ContactoContainer';
 import Cart from './components/Cart';
 import Checkout from './components/Checkout';
 import Footer from './components/Footer';
+import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
   return (
