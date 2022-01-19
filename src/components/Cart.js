@@ -14,13 +14,13 @@ const Cart = () => {
         if (value === "coderhouse") {
             const porcentaje = 10;
             useCart.aplicarDescuento(porcentaje)
-            toast.success(`"`+value+`"` + ". Se aplico correctamente")
+            toast(`"${value}". Se aplico correctamente`, {icon: "🎁"})
         }
         else if(value === ""){
             toast.warn("Ingrese algun cupon");
         }
         else {
-            toast.warn("El cupon ingresado no es valido");
+            toast.error("El cupon ingresado no es valido");
         }
     }
 
