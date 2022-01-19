@@ -23,7 +23,10 @@ const ItemDetailContainer = () => {
         <div className='container mb-5'>
             <Common.Title text="Detalle"></Common.Title>
             <Common.Hr></Common.Hr>
-            {isLoading ? <Common.Loading/> :
+            {isLoading ? <div className='d-flex justify-content-center'>
+                            <Common.Loading/>
+                         </div>
+                        :
                         <ItemDetail {...item}/>
             }
         </div>
