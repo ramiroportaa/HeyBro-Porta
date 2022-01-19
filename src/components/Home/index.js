@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import "./Home.css";
 
 const Home = () => {
-  const [frase, setFrase] = useState("X")
+  const [frase, setFrase] = useState("BIENVENIDOS!")
   const [pos, setPos] = useState(0)
 
   useEffect(() => {
