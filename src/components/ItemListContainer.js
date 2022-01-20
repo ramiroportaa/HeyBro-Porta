@@ -76,7 +76,7 @@ export default function ItemListContainer (props) {
             </div>
             <div className='row'>
                     <nav aria-label="Page navigation example">
-                        <ul class="pagination justify-content-center justify-content-lg-end">
+                        <ul className="pagination justify-content-center justify-content-lg-end">
                         { pages.map(p=>(
                             <li key={p} onClick={handleClick} className="page-item"><NavLink to="" className="page-link text-dark background-hover">{p}</NavLink></li>
                         )) }

@@ -227,101 +227,101 @@ const Checkout = () => {
             <Common.Hr></Common.Hr>
             <div className="row">
                 {useCart.cart.size > 0 ? 
-                                        <div class="py-5">
-                                            <h2 class="h5 text-uppercase mb-4">Detalles de facturacion y envio</h2>
-                                            <div class="row">
-                                                <div class="col-lg-8">
+                                        <div className="py-5">
+                                            <h2 className="h5 text-uppercase mb-4">Detalles de facturacion y envio</h2>
+                                            <div className="row">
+                                                <div className="col-lg-8">
                                                     <form id="form-checkout" onSubmit={handleSubmit}>
-                                                    <div class="row">
-                                                        <div class="col-lg-6 form-group">
-                                                        <label class="text-small text-uppercase" for="nombre">Nombre</label>
+                                                    <div className="row">
+                                                        <div className="col-lg-6 form-group">
+                                                        <label className="text-small text-uppercase" for="nombre">Nombre</label>
                                                         <input className={`form-input form-control form-control-lg ${nombre ? "border border-success" : "border border-danger"}`} id="nombre" type="text" placeholder="Ingresa tu nombre" onChange={(e)=>valorNombre(e.target.value ,'fac')}/>
                                                         </div>
-                                                        <div class="col-lg-6 form-group">
-                                                        <label class="text-small text-uppercase" for="apellido">Apellido</label>
+                                                        <div className="col-lg-6 form-group">
+                                                        <label className="text-small text-uppercase" for="apellido">Apellido</label>
                                                         <input className={`form-input form-control form-control-lg ${apellido ? "border border-success" : "border border-danger"}`} id="apellido" type="text" placeholder="Ingresa tu apellido" onChange={(e)=>valorApellido(e.target.value ,'fac')}/>
                                                         </div>
-                                                        <div class="col-lg-6 form-group">
-                                                        <label class="text-small text-uppercase" for="email">Email</label>
+                                                        <div className="col-lg-6 form-group">
+                                                        <label className="text-small text-uppercase" for="email">Email</label>
                                                         <input className={`form-input form-control form-control-lg ${email ? "border border-success" : "border border-danger"}`} id="email" type="email" placeholder="ej. Juan@ejemplo.com" onChange={(e)=>valorEmail(e.target.value ,'fac')}/>
                                                         </div>
-                                                        <div class="col-lg-6 form-group">
-                                                        <label class="text-small text-uppercase" for="tel">Telefono</label>
+                                                        <div className="col-lg-6 form-group">
+                                                        <label className="text-small text-uppercase" for="tel">Telefono</label>
                                                         <input className={`form-input form-control form-control-lg ${telefono ? "border border-success" : "border border-danger"}`} id="tel" type="tel" placeholder="ej. 2645279783" onChange={(e)=>valorTel(e.target.value ,'fac')}/>
                                                         </div>
-                                                        <div class="col-lg-6 form-group">
-                                                        <label class="text-small text-uppercase" for="dni">DNI (sin puntos)</label>
+                                                        <div className="col-lg-6 form-group">
+                                                        <label className="text-small text-uppercase" for="dni">DNI (sin puntos)</label>
                                                         <input className={`form-input form-control form-control-lg ${dni ? "border border-success" : "border border-danger"}`} id="dni" type="number" placeholder="ej. 40578954" onChange={(e)=>valorDni(e.target.value ,'fac')}/>
                                                         </div>
-                                                        <div class="col-lg-12 form-group">
-                                                        <label class="text-small text-uppercase" for="domicilio">Domicilio</label>
+                                                        <div className="col-lg-12 form-group">
+                                                        <label className="text-small text-uppercase" for="domicilio">Domicilio</label>
                                                         <input className={`form-input form-control form-control-lg ${domicilio ? "border border-success" : "border border-danger"}`} id="domicilio" type="text" placeholder="Nombre de la calle y numeración" onChange={(e)=>valorDomicilio(e.target.value ,'fac')}/>
                                                         </div>
-                                                        <div class="col-lg-6 form-group">
-                                                        <label class="text-small text-uppercase" for="ciudad">Ciudad</label>
+                                                        <div className="col-lg-6 form-group">
+                                                        <label className="text-small text-uppercase" for="ciudad">Ciudad</label>
                                                         <input className={`form-input form-control form-control-lg ${ciudad ? "border border-success" : "border border-danger"}`} id="ciudad" type="text" onChange={(e)=>valorCiudad(e.target.value ,'fac')}/>
                                                         </div>
-                                                        <div class="col-lg-6 form-group">
-                                                        <label class="text-small text-uppercase" for="provincia">Provincia</label>
+                                                        <div className="col-lg-6 form-group">
+                                                        <label className="text-small text-uppercase" for="provincia">Provincia</label>
                                                         <input className={`form-input form-control form-control-lg ${provincia ? "border border-success" : "border border-danger"}`} id="provincia" type="text" onChange={(e)=>valorProvincia(e.target.value ,'fac')}/>
                                                         </div>
-                                                        <div class="col-lg-6 form-group mt-3">
-                                                        <div class="custom-control custom-checkbox">
-                                                            <input class="custom-control-input" id="alternateAddressCheckbox" type="checkbox" onChange={(e) => setIsChecked(e.target.checked)} checked={isChecked}/>
-                                                            <label class="custom-control-label text-small" for="alternateAddressCheckbox">Enviar a un domicilio distinto al de facturación</label>
+                                                        <div className="col-lg-6 form-group mt-3">
+                                                        <div className="custom-control custom-checkbox">
+                                                            <input className="custom-control-input" id="alternateAddressCheckbox" type="checkbox" onChange={(e) => setIsChecked(e.target.checked)} checked={isChecked}/>
+                                                            <label className="custom-control-label text-small" for="alternateAddressCheckbox">Enviar a un domicilio distinto al de facturación</label>
                                                         </div>
                                                         </div>
-                                                        <div class="col-lg-12">
+                                                        <div className="col-lg-12">
                                                         <div className={`row ${isChecked ? "" : "d-none"}`} id="alternateAddress">
-                                                            <div class="col-12 mt-4">
-                                                            <h2 class="h4 text-uppercase mb-4">DETALLES DE ENVIO</h2>
+                                                            <div className="col-12 mt-4">
+                                                            <h2 className="h4 text-uppercase mb-4">DETALLES DE ENVIO</h2>
                                                             </div>
-                                                            <div class="col-lg-6 form-group">
-                                                            <label class="text-small text-uppercase" for="nombreEnvio">Nombre</label>
+                                                            <div className="col-lg-6 form-group">
+                                                            <label className="text-small text-uppercase" for="nombreEnvio">Nombre</label>
                                                             <input className={`form-input form-control form-control-lg ${nombreEnvio ? "border border-success" : "border border-danger"}`} id="nombreEnvio" type="text" placeholder="Ingresa tu nombre" onChange={(e)=>valorNombre(e.target.value ,'envio')}/>
                                                             </div>
-                                                            <div class="col-lg-6 form-group">
-                                                            <label class="text-small text-uppercase" for="apellidoEnvio">Apellido</label>
+                                                            <div className="col-lg-6 form-group">
+                                                            <label className="text-small text-uppercase" for="apellidoEnvio">Apellido</label>
                                                             <input className={`form-input form-control form-control-lg ${apellidoEnvio ? "border border-success" : "border border-danger"}`} id="apellidoEnvio" type="text" placeholder="Ingresa tu apellido" onChange={(e)=>valorApellido(e.target.value ,'envio')}/>
                                                             </div>
-                                                            <div class="col-lg-6 form-group">
-                                                            <label class="text-small text-uppercase" for="emailEnvio">Email</label>
+                                                            <div className="col-lg-6 form-group">
+                                                            <label className="text-small text-uppercase" for="emailEnvio">Email</label>
                                                             <input className={`form-input form-control form-control-lg ${emailEnvio ? "border border-success" : "border border-danger"}`} id="emailEnvio" type="email" placeholder="ej. Juan@ejemplo.com" onChange={(e)=>valorEmail(e.target.value ,'envio')}/>
                                                             </div>
-                                                            <div class="col-lg-6 form-group">
-                                                            <label class="text-small text-uppercase" for="telEnvio">Telefono</label>
+                                                            <div className="col-lg-6 form-group">
+                                                            <label className="text-small text-uppercase" for="telEnvio">Telefono</label>
                                                             <input className={`form-input form-control form-control-lg ${telefonoEnvio ? "border border-success" : "border border-danger"}`} id="telEnvio" type="tel" placeholder="ej. 2645279783" onChange={(e)=>valorTel(e.target.value ,'envio')}/>
                                                             </div>
-                                                            <div class="col-lg-6 form-group">
-                                                            <label class="text-small text-uppercase" for="dniEnvio">DNI (sin puntos)</label>
+                                                            <div className="col-lg-6 form-group">
+                                                            <label className="text-small text-uppercase" for="dniEnvio">DNI (sin puntos)</label>
                                                             <input className={`form-input form-control form-control-lg ${dniEnvio ? "border border-success" : "border border-danger"}`} id="dniEnvio" type="number" placeholder="ej. 40578954" onChange={(e)=>valorDni(e.target.value ,'envio')}/>
                                                             </div>
-                                                            <div class="col-lg-12 form-group">
-                                                            <label class="text-small text-uppercase" for="domicilioEnvio">Domicilio</label>
+                                                            <div className="col-lg-12 form-group">
+                                                            <label className="text-small text-uppercase" for="domicilioEnvio">Domicilio</label>
                                                             <input className={`form-input form-control form-control-lg ${domicilioEnvio ? "border border-success" : "border border-danger"}`} id="domicilioEnvio" type="text" placeholder="Nombre de la calle y numeración" onChange={(e)=>valorDomicilio(e.target.value ,'envio')}/>
                                                             </div>
-                                                            <div class="col-lg-6 form-group">
-                                                            <label class="text-small text-uppercase" for="ciudadEnvio">Ciudad</label>
+                                                            <div className="col-lg-6 form-group">
+                                                            <label className="text-small text-uppercase" for="ciudadEnvio">Ciudad</label>
                                                             <input className={`form-input form-control form-control-lg ${ciudadEnvio ? "border border-success" : "border border-danger"}`} id="ciudadEnvio" type="text" onChange={(e)=>valorCiudad(e.target.value ,'envio')}/>
                                                             </div>
-                                                            <div class="col-lg-6 form-group">
-                                                            <label class="text-small text-uppercase" for="provinciaEnvio">Provincia</label>
+                                                            <div className="col-lg-6 form-group">
+                                                            <label className="text-small text-uppercase" for="provinciaEnvio">Provincia</label>
                                                             <input className={`form-input form-control form-control-lg ${provinciaEnvio ? "border border-success" : "border border-danger"}`} id="provinciaEnvio" type="text" onChange={(e)=>valorProvincia(e.target.value ,'envio')}/>
                                                             </div>
                                                         </div>
                                                         </div>
-                                                        <div class="col-lg-12 form-group mt-3">
-                                                        <button class="btn btn-dark" type="submit">Enviar orden</button>
+                                                        <div className="col-lg-12 form-group mt-3">
+                                                        <button className="btn btn-dark" type="submit">Enviar orden</button>
                                                         </div>
                                                     </div>
                                                     </form>
                                                 </div>
                                     
-                                                <div class="col-lg-4">
-                                                    <div class="card border-0 rounded-0 p-lg-4 bg-light">
-                                                    <div class="card-body">
-                                                        <h5 class="text-uppercase mb-4">Tu orden</h5>
-                                                        <ul class="list-unstyled mb-0">
+                                                <div className="col-lg-4">
+                                                    <div className="card border-0 rounded-0 p-lg-4 bg-light">
+                                                    <div className="card-body">
+                                                        <h5 className="text-uppercase mb-4">Tu orden</h5>
+                                                        <ul className="list-unstyled mb-0">
                                                             {items.map(item =>(
                                                                 <>
                                                                 <li className = "d-flex align-items-center justify-content-between">
@@ -337,11 +337,11 @@ const Checkout = () => {
                                                             {discountRate ?
                                                                             <>
                                                                             <li className = "d-flex align-items-center justify-content-between mt-2">
-                                                                            <strong class="text-uppercase small font-weight-bold">Subtotal</strong>
+                                                                            <strong className="text-uppercase small font-weight-bold">Subtotal</strong>
                                                                             <span>${subtotal}</span>
                                                                             </li>
                                                                             <li className = "d-flex align-items-center justify-content-between mt-2">
-                                                                                <strong class="text-uppercase small font-weight-bold">Descuento {discountRate}%</strong>
+                                                                                <strong className="text-uppercase small font-weight-bold">Descuento {discountRate}%</strong>
                                                                                 <span>$({discount})</span>
                                                                             </li>
                                                                             </>
