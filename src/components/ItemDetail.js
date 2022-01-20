@@ -12,11 +12,11 @@ const ItemDetail = ({id, title, description, price, pictureUrl, stock, categoryI
   
     const Stars = ()=>(
         <ul className="list-inline mb-2">
-        <li className="list-inline-item m-0"><i className="fas fa-star small text-warning"></i></li>
-        <li className="list-inline-item m-0"><i className="fas fa-star small text-warning"></i></li>
-        <li className="list-inline-item m-0"><i className="fas fa-star small text-warning"></i></li>
-        <li className="list-inline-item m-0"><i className="fas fa-star small text-warning"></i></li>
-        <li className="list-inline-item m-0"><i className="fas fa-star-half-alt small text-warning"></i></li>
+        <li key={"s1"} className="list-inline-item m-0"><i className="fas fa-star small text-warning"></i></li>
+        <li key={"s2"} className="list-inline-item m-0"><i className="fas fa-star small text-warning"></i></li>
+        <li key={"s3"} className="list-inline-item m-0"><i className="fas fa-star small text-warning"></i></li>
+        <li key={"s4"} className="list-inline-item m-0"><i className="fas fa-star small text-warning"></i></li>
+        <li key={"s5"} className="list-inline-item m-0"><i className="fas fa-star-half-alt small text-warning"></i></li>
     </ul>
     )
 
@@ -66,9 +66,9 @@ const ItemDetail = ({id, title, description, price, pictureUrl, stock, categoryI
                     {description}
                 </p>
                 <ul className="list-unstyled small d-inline-block">
-                <li className="px-3 py-2 mb-1 bg-white"><strong className="text-uppercase">ID del producto: </strong><span className="ms-2 text-muted">{id}</span></li>
-                <li className="px-3 py-2 mb-1 bg-white text-muted"><strong className="text-uppercase text-dark">Categoria: </strong><Link to={`/productos/category/${categoryId}`} className="reset-anchor ms-2 text-uppercase">{categoryId}</Link></li>
-                <li className="px-3 py-2 mb-1 bg-white"><strong className="text-uppercase">Stock disponible: </strong><span className="ms-2 text-muted">{stock}</span></li>
+                <li key={id.toString()} className="px-3 py-2 mb-1 bg-white"><strong className="text-uppercase">ID del producto: </strong><span className="ms-2 text-muted">{id}</span></li>
+                <li key={categoryId} className="px-3 py-2 mb-1 bg-white text-muted"><strong className="text-uppercase text-dark">Categoria: </strong><Link to={`/productos/category/${categoryId}`} className="reset-anchor ms-2 text-uppercase">{categoryId}</Link></li>
+                <li key={stock.toString()} className="px-3 py-2 mb-1 bg-white"><strong className="text-uppercase">Stock disponible: </strong><span className="ms-2 text-muted">{stock}</span></li>
               </ul>
 
                 {(cantidadAgregada > 0) ?

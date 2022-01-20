@@ -79,11 +79,11 @@ const Cart = () => {
                 <div className="card-body">
                     <h5 className="text-uppercase mb-4">Total de la orden</h5>
                     <ul className="list-unstyled mb-0">
-                        <li key={0} className="d-flex align-items-center justify-content-between"><strong className="text-uppercase small fw-bold">Subtotal</strong><span className="text-muted small">${useCart.cart.total}.-</span></li>
-                        <li key={1} className="d-flex align-items-center justify-content-between"><strong className="text-uppercase small fw-normal">Descuento {useCart.cart.discountRate}%</strong><span className="text-muted small">${useCart.cart.total*useCart.cart.discountRate/100}.-</span></li>
-                        <li key={2} className="border-bottom my-2"></li>
-                        <li key={3} className="d-flex align-items-center justify-content-between mb-4"><strong className="text-uppercase small font-weight-bold">Total</strong><span id="totalOrden" >${useCart.cart.total - (useCart.cart.total*useCart.cart.discountRate/100)}.-</span></li>
-                        <li key={4}>
+                        <li key="0" className="d-flex align-items-center justify-content-between"><strong className="text-uppercase small fw-bold">Subtotal</strong><span className="text-muted small">${useCart.cart.total}.-</span></li>
+                        <li key="1" className="d-flex align-items-center justify-content-between"><strong className="text-uppercase small fw-normal">Descuento {useCart.cart.discountRate}%</strong><span className="text-muted small">${useCart.cart.total*useCart.cart.discountRate/100}.-</span></li>
+                        <li key="2" className="border-bottom my-2"></li>
+                        <li key="3" className="d-flex align-items-center justify-content-between mb-4"><strong className="text-uppercase small font-weight-bold">Total</strong><span id="totalOrden" >${useCart.cart.total - (useCart.cart.total*useCart.cart.discountRate/100)}.-</span></li>
+                        <li key="4">
                             <form onSubmit={handleSubmit}>
                                 <div className="form-group mb-0">
                                 <input id="formInput" className="form-control" type="text" placeholder="Ingresa tu cupon"/>

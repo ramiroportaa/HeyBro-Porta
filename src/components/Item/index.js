@@ -31,8 +31,8 @@ const Item = ({id, title, price, pictureUrl, stock}) => {
                 </Link>
                 <div className="product-overlay">
                     <ul className="mb-0 list-inline">
-                        <li className="list-inline-item m-0 p-0"><button className="btn btn-sm btn-dark px-3 background-hover" onClick={addOneItem}>{useCart.isInCart(id) ? "Agregar OTRA unidad" : "Agregar al carrito"}</button></li>
-                        <li className="list-inline-item me-0"><Link to={`/productos/item/${id}`} className="btn btn-sm btn-outline-dark background-hover"><i className="fas fa-expand"></i></Link></li>               
+                        <li key="add" className="list-inline-item m-0 p-0"><button className="btn btn-sm btn-dark px-3 background-hover" onClick={addOneItem}>{useCart.isInCart(id) ? "Agregar OTRA unidad" : "Agregar al carrito"}</button></li>
+                        <li key="expand" className="list-inline-item me-0"><Link to={`/productos/item/${id}`} className="btn btn-sm btn-outline-dark background-hover"><i className="fas fa-expand"></i></Link></li>               
                     </ul>
                 </div>
             </div>

@@ -59,10 +59,10 @@ export default function ItemListContainer (props) {
                 <div className="col-lg-3 order-2 order-lg-1">
                     <h5 className="text-uppercase mb-4">Categorias</h5>
                     {categoryList.map(cat =>(
-                        <Link to={`/productos/category/${cat}`} className="reset-anchor a py-2 px-4 bg-dark text-white mb-3 d-block background-hover"><strong className="small text-uppercase font-weight-bold">{cat}</strong></Link>
+                        <Link to={`/productos/category/${cat}?page=1`} className="reset-anchor a py-2 px-4 bg-dark text-white mb-3 d-block background-hover"><strong className="small text-uppercase font-weight-bold">{cat}</strong></Link>
                     ))}
                     <br/>
-                    <Link to="/productos" className="reset-anchor text-uppercase a">Ver todos los productos</Link>
+                    <Link to="/productos?page=1" className="reset-anchor text-uppercase a">Ver todos los productos</Link>
                 </div>
                 <div className="col-lg-9 order-1 order-lg-2 mb-5 mb-lg-0">
                     <div className="row mb-3 align-items-center justify-content-center">
@@ -78,7 +78,7 @@ export default function ItemListContainer (props) {
                     <nav aria-label="Page navigation example">
                         <ul className="pagination justify-content-center justify-content-lg-end">
                         { pages.map(p=>(
-                            <li key={p} onClick={handleClick} className="page-item"><NavLink to="" className="page-link text-dark background-hover">{p}</NavLink></li>
+                            <li key={p.toString()} onClick={handleClick} className="page-item"><NavLink to="" className="page-link text-dark background-hover">{p}</NavLink></li>
                         )) }
                         </ul>
                     </nav>

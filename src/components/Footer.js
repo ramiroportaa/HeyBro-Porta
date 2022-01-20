@@ -25,13 +25,13 @@ const Footer = () => {
               <div className="col-lg-4 col-md-6 mb-4 mb-md-0">
                 <h5 className="text-uppercase">Links</h5>      
                 <ul className="list-unstyled mb-0">
-                  <li key="1">
+                  <li key="ini">
                     <Link to="/" className="text-white">INICIO</Link>
                   </li>
-                  <li key="2">
+                  <li key="shop">
                     <Link to="/productos" className="text-white">E-SHOP</Link>
                   </li>
-                  <li key="3">
+                  <li key="contacto">
                     <Link to="contacto" className="text-white">CONTACTO</Link>
                   </li>
                 </ul>
@@ -42,11 +42,11 @@ const Footer = () => {
                 <ul className="list-unstyled mb-0">
                     {categoryList.map(cat =>(
                         <li key={cat}>
-                            <Link to={`/productos/category/${cat}`} className="text-white text-uppercase">{cat}</Link>
+                            <Link to={`/productos/category/${cat}/?page=1`} className="text-white text-uppercase">{cat}</Link>
                         </li>
                     ))}
                     <li>
-                    <Link to="/productos" className="text-white text-uppercase">Todos los productos</Link>
+                    <Link to="/productos?page=1" className="text-white text-uppercase">Todos los productos</Link>
                     </li>
                 </ul>
               </div>

@@ -238,11 +238,11 @@ const Checkout = () => {
                                                         <ul className="list-unstyled mb-0">
                                                             {items.map(item =>(
                                                                 <>
-                                                                <li className = "d-flex align-items-center justify-content-between">
+                                                                <li key={item.title} className = "d-flex align-items-center justify-content-between">
                                                                 <strong className="small font-weight-bold">({item.quantity}) - {item.title}</strong>
                                                                 <span className="text-muted small">${item.price * item.quantity}</span>
                                                                 </li>
-                                                                <li className = "border-bottom my-2">
+                                                                <li key={item.id} className = "border-bottom my-2">
                                                                 </li>
                                                                 </>
                                                             ))
@@ -250,11 +250,11 @@ const Checkout = () => {
                                     
                                                             {discountRate ?
                                                                             <>
-                                                                            <li className = "d-flex align-items-center justify-content-between mt-2">
+                                                                            <li key="subtotal" className = "d-flex align-items-center justify-content-between mt-2">
                                                                             <strong className="text-uppercase small font-weight-bold">Subtotal</strong>
                                                                             <span>${subtotal}</span>
                                                                             </li>
-                                                                            <li className = "d-flex align-items-center justify-content-between mt-2">
+                                                                            <li key="desc" className = "d-flex align-items-center justify-content-between mt-2">
                                                                                 <strong className="text-uppercase small font-weight-bold">Descuento {discountRate}%</strong>
                                                                                 <span>$({discount})</span>
                                                                             </li>
@@ -263,7 +263,7 @@ const Checkout = () => {
                                                                             null
                                                             }
                                     
-                                                            <li className = "d-flex align-items-center justify-content-between mt-2 p-2 bg-dark text-white">
+                                                            <li key="total" className = "d-flex align-items-center justify-content-between mt-2 p-2 bg-dark text-white">
                                                                 <strong className="text-uppercase small font-weight-bold">Total</strong>
                                                                 <span>${total}</span>
                                                             </li>

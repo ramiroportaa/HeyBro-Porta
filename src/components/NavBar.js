@@ -20,16 +20,16 @@ function NavBar(){
             </button>
             <div className="collapse navbar-collapse justify-content-end" id="navbarScroll">
                 <ul className="navbar-nav text-center">
-                    <li className="nav-item my-lg-2 mx-lg-2">
+                    <li key="inicio" className="nav-item my-lg-2 mx-lg-2">
                     <NavLink to={"/"} className={({isActive}) => isActive ? "nav-link active" : "nav-link"}>Inicio</NavLink>
                     </li>
-                    <li className="nav-item my-lg-2 mx-lg-2">
-                    <NavLink to={"/productos"} className={({isActive}) => isActive ? "nav-link active" : "nav-link"}>Productos</NavLink>
+                    <li key="productos" className="nav-item my-lg-2 mx-lg-2">
+                    <NavLink to={"/productos?page=1"} className={({isActive}) => isActive ? "nav-link active" : "nav-link"}>Productos</NavLink>
                     </li>
-                    <li className="nav-item my-lg-2 mx-lg-2">
+                    <li key="contacto" className="nav-item my-lg-2 mx-lg-2">
                     <NavLink to={"/contacto"} className={({isActive}) => isActive ? "nav-link active" : "nav-link"}>Contacto</NavLink>
                     </li>
-                    <li className={`nav-item my-lg-2 ms-lg-2 ${mostrarCart ? "" : "d-none"}`}>
+                    <li key="cart" className={`nav-item my-lg-2 ms-lg-2 ${mostrarCart ? "" : "d-none"}`}>
                     <NavLink to={"/cart"} className={({isActive}) => isActive ? "nav-link active" : "nav-link"}><CartWidget mostrar={mostrar}/></NavLink>
                     </li>
                 </ul>
