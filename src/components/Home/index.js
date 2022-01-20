@@ -27,7 +27,7 @@ const Home = () => {
                           {frase}
                       </h2>
                     </div>
-                    <Link to="/productos" className="btn portada-boton" >IR A LA TIENDA</Link>
+                    <Link to="/productos?page=1" className="btn portada-boton" >IR A LA TIENDA</Link>
                   </div>
                 </div>
               </div>
