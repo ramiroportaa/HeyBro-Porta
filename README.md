@@ -39,5 +39,5 @@ En el archivo "getData.js" se encuentran las funciones que hacen peticion a fire
 
 ## GIF muestra de navegabilidad.
 
-![GIF](https://github.com/ramiroportaa/HeyBro-Porta/blob/3eef408e08e35ead69e951e7c9d6998fefbcf161/Animation.gif)
-https://github.com/ramiroportaa/HeyBro-Porta/blob/3eef408e08e35ead69e951e7c9d6998fefbcf161/Animation.gif
+![GIF](https://github.com/ramiroportaa/HeyBro-Porta/blob/82f8464af49b82ebe953c284a960485d3b6c67ae/Animation.gif)
+https://github.com/ramiroportaa/HeyBro-Porta/blob/82f8464af49b82ebe953c284a960485d3b6c67ae/Animation.gif
