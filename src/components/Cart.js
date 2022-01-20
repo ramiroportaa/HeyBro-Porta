@@ -109,7 +109,7 @@ const Cart = () => {
                                         :
                                         <>
                                         <h5 className='text-center'>EL CARRITO ESTA VACIO</h5>
-                                        <div className="my-3 mb-md-0 text-center"><Link to="/productos" className="btn p-1 btn-outline-dark"><i className="fas fa-long-arrow-alt-left me-2"> </i>Volver al catalogo</Link></div>
+                                        <div className="my-3 mb-md-0 text-center"><Link to="/productos?page=1" className="btn p-1 btn-outline-dark"><i className="fas fa-long-arrow-alt-left me-2"> </i>Volver al catalogo</Link></div>
                                         </>
                                         
                 }

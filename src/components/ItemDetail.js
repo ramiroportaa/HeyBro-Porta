@@ -80,7 +80,7 @@ const ItemDetail = ({id, title, description, price, pictureUrl, stock, categoryI
                 }
 
                 <div className='d-flex justify-content-center justify-content-md-end'>
-                  <Link to="/productos" className='btn btn-outline-dark'>Volver al catálogo <span className='ms-1'>←</span></Link>
+                  <Link to="/productos?page=1" className='btn btn-outline-dark'>Volver al catálogo <span className='ms-1'>←</span></Link>
                 </div>
             </div>
             <ToastContainer/>
