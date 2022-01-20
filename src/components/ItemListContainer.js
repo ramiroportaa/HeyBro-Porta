@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react'
-import { Link, useParams } from 'react-router-dom';
+import { Link, useParams, NavLink, useSearchParams } from 'react-router-dom';
 import ItemList from './ItemList';
 import Common from './Common';
 
@@ -15,10 +15,11 @@ export default function ItemListContainer (props) {
     const categoryList = ["remeras", "pantalones", "bermudas", "camisas"]
 
     //Para paginacion numerica
+    const [searchParams, setSearchParams] = useSearchParams();
     const [itemsList, setItemsList] = useState([])
     const [pages, setPages] = useState([])
     const limit = 8
-    
+
     useEffect(() => {
         //Llamo a funcion anonima para obtener todos los documentos de la coleccion de firestore y setear la paginacion.
         (async function () {
@@ -30,25 +31,24 @@ export default function ItemListContainer (props) {
             setPages(pagesArray)
             setItemsList(snapshot.docs)
         })();
-
+        
         //Llamo a fn anonima para obtener los documentos con el limite establecido y setear el state de productos que luego se renderea.
         (async function () {
-        const snapshot = isCategory ? await getCollectionByCategory(categoryId, limit) : await getCollection(limit)
-        setProductos(snapshot.docs.map(doc =>({id: doc.id, ...doc.data()})));
-        setIsLoading(false);
+            const page = searchParams.get("page") ?? 1;
+            const item = itemsList[Number(page)*limit - limit]
+            item && console.log(item.data());
+            const snapshot = isCategory ? await getCollectionByCategory(categoryId, limit, page !== 1 ? item : "") : await getCollection(limit, page !== 1 ? item : "")
+            setProductos(snapshot.docs.map(doc =>({id: doc.id, ...doc.data()})));
+            setIsLoading(false);
         })();
 
         return (setIsLoading(true))
-    }, [categoryId, isCategory])
+    }, [categoryId, isCategory, searchParams])
 
     //Manejador para paginacion de resultados.
     const handleClick = async (e)=>{
         const page = Number(e.target.innerText)
-        const item = itemsList[page*limit - limit]
-        //Vulevo a llamar fn para obtener los documentos pero pasandole el item para la query "startAt"
-        const snapshot = isCategory ? await getCollectionByCategory(categoryId, limit, item) : await getCollection(limit, item)
-        setProductos(snapshot.docs.map(doc =>({id: doc.id, ...doc.data()})));
-        setIsLoading(false);
+        setSearchParams({page: page})
     }
 
     return (
@@ -66,7 +66,7 @@ export default function ItemListContainer (props) {
                 </div>
                 <div className="col-lg-9 order-1 order-lg-2 mb-5 mb-lg-0">
                     <div className="row mb-3 align-items-center justify-content-center">
-                        {isLoading ? 
+                        {isLoading ?
                                     <Common.Loading/>
                                     :
                                     (productos.length ? <ItemList items={productos}></ItemList> : <h4 className='text-center'>NO SE ENCONTRARON RESULTADOS</h4>)
@@ -78,7 +78,7 @@ export default function ItemListContainer (props) {
                     <nav aria-label="Page navigation example">
                         <ul class="pagination justify-content-center justify-content-lg-end">
                         { pages.map(p=>(
-                            <li key={p} onClick={handleClick} className="page-item"><Link to="" className="page-link text-dark background-hover">{p}</Link></li>
+                            <li key={p} onClick={handleClick} className="page-item"><NavLink to="" className="page-link text-dark background-hover">{p}</NavLink></li>
                         )) }
                         </ul>
                     </nav>

@@ -6,6 +6,10 @@ import { ToastContainer, toast } from 'react-toastify';
 
 const ItemDetail = ({id, title, description, price, pictureUrl, stock, categoryId}) => {
 
+    const useCart = React.useContext(CartContext);
+    const itemCartQuantity = useCart.getItemQuantity(id)
+    const [cantidadAgregada, setCantidadAgregada] = useState(itemCartQuantity)
+  
     const Stars = ()=>(
         <ul className="list-inline mb-2">
         <li className="list-inline-item m-0"><i className="fas fa-star small text-warning"></i></li>
@@ -24,12 +28,6 @@ const ItemDetail = ({id, title, description, price, pictureUrl, stock, categoryI
           </div>
       </div>        
     )
-
-    const useCart = React.useContext(CartContext);
-
-    const itemCartQuantity = useCart.getItemQuantity(id)
-
-    const [cantidadAgregada, setCantidadAgregada] = useState(itemCartQuantity)
 
     function addToCart (cantidad) {
       if ((stock >= cantidad) && (cantidad > 0)) {

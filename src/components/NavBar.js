@@ -21,16 +21,16 @@ function NavBar(){
             <div className="collapse navbar-collapse justify-content-end" id="navbarScroll">
                 <ul className="navbar-nav text-center">
                     <li className="nav-item my-lg-2 mx-lg-2">
-                    <NavLink to={"/"} activeclassname="active" className="nav-link">Inicio</NavLink>
+                    <NavLink to={"/"} className={({isActive}) => isActive ? "nav-link active" : "nav-link"}>Inicio</NavLink>
                     </li>
                     <li className="nav-item my-lg-2 mx-lg-2">
-                    <NavLink to={"/productos"} activeclassname="active" className="nav-link">Productos</NavLink>
+                    <NavLink to={"/productos"} className={({isActive}) => isActive ? "nav-link active" : "nav-link"}>Productos</NavLink>
                     </li>
                     <li className="nav-item my-lg-2 mx-lg-2">
-                    <NavLink to={"/contacto"} activeclassname="active" className="nav-link">Contacto</NavLink>
+                    <NavLink to={"/contacto"} className={({isActive}) => isActive ? "nav-link active" : "nav-link"}>Contacto</NavLink>
                     </li>
                     <li className={`nav-item my-lg-2 ms-lg-2 ${mostrarCart ? "" : "d-none"}`}>
-                    <NavLink to={"/cart"} activeclassname="active" className="nav-link"><CartWidget mostrar={mostrar}/></NavLink>
+                    <NavLink to={"/cart"} className={({isActive}) => isActive ? "nav-link active" : "nav-link"}><CartWidget mostrar={mostrar}/></NavLink>
                     </li>
                 </ul>
             </div>
